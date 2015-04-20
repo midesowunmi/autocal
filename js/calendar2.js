@@ -37,37 +37,6 @@ var smsMsg = '{"account_sid": "AC9a0f09ecdbcb532036a8b9ca1c617cb2",' +
     '"status": "queued",' +
     '"to": "+17709105521",' +
     '"uri": "/2010-04-01/Accounts/AC9a0f09ecdbcb532036a8b9ca1c617cb2/Messages/MM90c6fc909d8504d45ecdb3a3d5b3556e.json"}';
-//document.domain = "naijametro.com";
-//chrome-extension://bkejgnogefabndejkplmiifmlnefnikm autoCal
-// cekfjfddodeidjhomcokekidhhpnifkb autoReminder
-/*window.onmessage = function(e) {
-    if (e.origin !== "chrome-extension://cekfjfddodeidjhomcokekidhhpnifkb") {
-        console.log("message from another domain..."+ e.origin);
-        return;
-    }
-    console.log("got your message buddy");
-    var payload = JSON.parse(e.data);
-    var eventList =  JSON.stringify(payload.data) ;
-
-      switch(payload.method) {
-        case 'set':
-            localStorage.setItem(payload.key, JSON.stringify(payload.data));
-            $("#clientCal").fullCalendar('addEventSource', payload.data);
-            $("#clientCal").fullCalendar('renderEvents');
-            console.log("... adding local events ... reading localStorage");
-            break;
-        case 'get':
-            var parent = window.parent;
-            var data = localStorage.getItem(payload.key);
-            console.log("data from iframe... " + data);
-            parent.postMessage(data, "*");
-            break;
-        case 'remove':
-            localStorage.removeItem(payload.key);
-            break;
-    }
-};    */
-
 
 $( window ).load(function(){
    // var url = "https://apis.google.com/js/plusone.js";
