@@ -39,7 +39,7 @@ var smsMsg = '{"account_sid": "AC9a0f09ecdbcb532036a8b9ca1c617cb2",' +
 //chrome-extension://ndajhgakfljpkaecidonlliocbmcicll   old id
 var newEvent2 = {
     "summary": "Sandy Springs BusinessWeek Conference",
-    "location": "221 Old Bond Street, London, United Kingdom",
+    "location": "225 Old Bond Street, London, United Kingdom",
     "start": "2014-09-29T10:00:00.000-07:00",
     "end":  "2014-09-29T10:25:00.000-07:00",
     "sequence": 0
@@ -61,7 +61,7 @@ window.onmessage = function(e) {
     }
     console.log("got your message buddy");
     // set payload from offline localStorage and set to online localStorage
-    // get means send download  data from online to offline
+    // get means send download  data from online to offline calendar
     if(e.data.method !== ""){
         //var payload = JSON.parse(e.data);
         var payload = e.data;
