@@ -99,14 +99,11 @@ function handleClientLoad() {
 }
 
 function checkAuth() {
-   // if(gapi.load){
-
     $("#clientCal").fullCalendar('addEventSource', calObj.jsonEvents);
     var authorizeButton = document.getElementById('authorize-button');
     authorizeButton.onclick = handleAuthClick;
     gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
     console.log("checking auth after loading client...");
-  //  }
 }
 
 function handleAuthResult(authResult) {
@@ -117,8 +114,7 @@ function handleAuthResult(authResult) {
     if (authResult.error == undefined || authResult.error == "") {
         console.log("authresult error is " +authResult.error);
         authorizeButton.disabled = true;
-        //authorizeButton.style.visibility = 'hidden';
-       // syncButton.style.visibility = '';
+
         gapi.client.setApiKey(apiKey);
         calObj.makeApiCall();
     } else {
