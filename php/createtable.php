@@ -5,7 +5,7 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-// Create table
+// Create table for calendar events
 $sql="CREATE TABLE Schedule1(PID INT NOT NULL AUTO_INCREMENT,PRIMARY KEY(PID),message CHAR(160),notify_time CHAR(30),phone INT)";
 
 // Execute query
