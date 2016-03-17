@@ -5,7 +5,7 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-// escape variables for security
+// escape variables for security prevent SQL injection etc
 $message = mysqli_real_escape_string($con, $_POST['smsMessage']);
 $phone = mysqli_real_escape_string($con, $_POST['cellPhone']);
 $event_date = mysqli_real_escape_string($con, $_POST['eventDate']);
