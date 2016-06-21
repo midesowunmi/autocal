@@ -11,8 +11,7 @@
     offlineController for the chrome-extension component
  */
    //http://jsfiddle.net/ivankovachev/U4GLT/light/  popover directive
-angular
-.module('offlineModule')
+angular.module('offlineModule')
 .controller('offlineCtrl',[ '$scope','$compile','PopService','$rootScope','utilS',
     function($scope, $compile, PopService, $rootScope, utilS){
         window.offline = $scope;
