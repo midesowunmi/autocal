@@ -95,7 +95,7 @@ var  calObj = {
        //     'resource': this.jsonEvents
        // });
         //request2.execute(function(resp) {
-            console.log("inserting event... "+ obj);
+            console.log("inserting event... " + obj);
         //});
     },
     //update events on google calendar
@@ -118,7 +118,7 @@ var  calObj = {
         });
 
         request.execute(function(resp) {
-            console.log("deleting event... "+ resp);
+            console.log("deleting event from calendar... "+ resp);
         });
     },
     // Insert the JS from above, here.
