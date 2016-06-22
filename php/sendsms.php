@@ -3,7 +3,7 @@
 require_once('twilio-php/Services/Twilio.php'); // Loads the library
 
 $con=mysqli_connect("naijaevents.db.9059557.hostedresource.com","naijaevents","naijaEvent1!","naijaevents");
-// Check connection
+// Check database connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
