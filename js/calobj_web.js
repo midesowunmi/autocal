@@ -80,13 +80,13 @@ var  calObj = {
     // test google calendar API call gets events list and displays in DOM
     makeApiCall: function () {
         var resource = {
-            "summary": "Blog entry",
+            "summary": "Weekly Blog entry",
             "location": "3450 Roswell Road, Atlanta, GA 30357",
             "start": {
-                "dateTime": "2014-09-16T10:00:00.000-07:00"
+                "dateTime": "2014-09-17T10:00:00.000-07:00"
             },
             "end": {
-                "dateTime": "2014-09-16T10:25:00.000-07:00"
+                "dateTime": "2014-09-17T10:25:00.000-07:00"
             }
         };
         gapi.client.load('calendar', 'v3', function() {
