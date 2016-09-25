@@ -39,7 +39,7 @@ var smsMsg = '{"account_sid": "AC9a0f09ecdbcb532036a8b9ca1c617cb2",' +
     '"uri": "/2010-04-01/Accounts/AC9a0f09ecdbcb532036a8b9ca1c617cb2/Messages/MM90c6fc909d8504d45ecdb3a3d5b3556e.json"}';
 
 $( window ).load(function(){
-   // var url = "https://apis.google.com/js/plusone.js";
+   
     var url = "../lib/client.js";
     $.getScript(url)
         .done(function(script, textStatus){
@@ -62,8 +62,6 @@ $( window ).load(function(){
     $("#btnFormat").click(function(){
        var myData = $("#rawData").val();
 
-       // var myTime = moment(myData).format("dddd, MMMM Do YYYY, h:mm:ss a");
-      //  var myTime = moment(myData).format("HH:mm:ss Z");
         var smsUrl = "https://www.naijametro.com/calendar/php/sendsms.php";
 
         var smsData = {};
@@ -75,8 +73,7 @@ $( window ).load(function(){
     });
        //console.log("format time " + myTime);
         $("#btnAddEvent").click(function(){
-             // var myTime = moment(myData).format("dddd, MMMM Do YYYY, h:mm:ss a");
-            //  var myTime = moment(myData).format("HH:mm:ss Z");
+
             var smsUrl = "https://www.naijametro.com/calendar/php/addevent.php";
 
             var eventData = {};
@@ -99,32 +96,27 @@ function handleClientLoad() {
 }
 
 function checkAuth() {
-   // if(gapi.load){
 
     $("#clientCal").fullCalendar('addEventSource', calObj.jsonEvents);
     var authorizeButton = document.getElementById('authorize-button');
     authorizeButton.onclick = handleAuthClick;
     gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
     console.log("checking auth after loading client...");
-  //  }
 }
 
 function handleAuthResult(authResult) {
     var authorizeButton = document.getElementById('authorize-button');
-    //var syncButton = document.getElementById('btnSyncEvent');
-
-    console.log("call handle auth result...");
+     console.log("call handle auth result...");
     if (authResult.error == undefined || authResult.error == "") {
         console.log("authresult error is " +authResult.error);
         authorizeButton.disabled = true;
-        //authorizeButton.style.visibility = 'hidden';
-       // syncButton.style.visibility = '';
+
         gapi.client.setApiKey(apiKey);
         calObj.makeApiCall();
     } else {
-        //authorizeButton.disabled = true;
+ 
         authorizeButton.style.visibility = '';
-        //syncButton.style.visibility = '';
+
         console.log("authresult error is " +authResult.error);
         console.log("ready to click login button");
         authorizeButton.onclick = handleAuthClick;
