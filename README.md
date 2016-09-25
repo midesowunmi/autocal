@@ -10,5 +10,4 @@ The offline mode is available as a Chrome Extension when the user is offline and
 New events are stored using local storage on the user's computer.
 When the user goes online, he can sync the offline and online events. Offline evenst are then stored in the mySQL database and also added to the Google Calendar
 
-Events can be created on the hour or half hour only. The Apache backend server has a cron job which runs every 30 minutes. The script checks the database for any event reminders
-set for that time and sends an SMS using Twilio API
+Events can be created on the hour or half hour only. The Apache backend server has a cron job which runs a PHP script every 30 minutes. The script checks the database for any event reminders set for that time and sends an SMS using Twilio API
