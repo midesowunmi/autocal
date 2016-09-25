@@ -64,7 +64,7 @@ angular.module('offlineModule')
         );
         // initialize the fullCalendar instance
         $("#clientCal").fullCalendar({
-           // events: { url :"https://www.google.com/calendar/feeds/midethesis%40gmail.com/public/basic",  backgroundColor: "#f44"},
+           
             eventSources: [  //'https://www.google.com/calendar/feeds/midethesis%40gmail.com/public/basic',
                             JSON.parse($scope.oldEventsList)
             ],
@@ -79,7 +79,7 @@ angular.module('offlineModule')
 
 
                 console.log("clicked on " + date.format() + jsEvent.target.id);
-                //$(".fc-day-content").popover('show');
+                
                 var eventDate = date.format();
                 $scope.initPop();
                 if(jsEvent.target.id == "btnSavePop"){
@@ -116,7 +116,7 @@ angular.module('offlineModule')
             },
             // access to each calendar day's td element
             dayRender: function(date, cell){
-             //   cell.attr('rel','popover');
+            
 
             }
         });
@@ -125,18 +125,18 @@ angular.module('offlineModule')
         $scope.openModal = function (title, info, location, start, end, editable) {
             // find opened event index in localStorage
             var eventsList = localStorage.getItem('eventsList');
-           // console.log(eventsList);
+           
             eventsList = JSON.parse(eventsList);
             $scope.eventListJson =  eventsList;
             var eventid = moment($scope.editevent.start).format();
             var eventidStr = eventid.toString().slice(0,16);
             for(var i = 0; i < eventsList.length; i++){
                 var eventidStr2 =  eventsList[i].start.toString().slice(0,16);
-                //console.log (eventsList[i].start);
+                
                 if(eventidStr == eventidStr2){
                     console.log("opened... " + eventsList[i].title);
                     $scope.editEventIndex = i;
-                    //delete eventsList[i];
+                    
                 }
             }
             console.log("editable " +editable);
@@ -153,7 +153,7 @@ angular.module('offlineModule')
             if (start && start != 'null') {
                 $scope.txteventstartmodal =   moment(start).format('YYYY-MM-DD HH:mm');
                 $("#txtEventStartModal").attr('placeholder',moment(start).format('YYYY-MM-DD HH:mm') );
-                //$("#event-content").append("Start: " + moment(start).format('MMMM Do YYYY, h:mm:ss a') + "<br />")
+                
             } else {
                 $("#event-content").append(""); //no start (huh?) clear out previous info.
             }
@@ -161,20 +161,20 @@ angular.module('offlineModule')
             {
                 $scope.txteventendmodal =   moment(end).format('YYYY-MM-DD HH:mm');
                 $("#txtEventEndModal").attr('placeholder',moment(end).format('YYYY-MM-DD HH:mm') );
-                //$("#event-content").append("End: " + moment(end).format('MMMM Do YYYY, h:mm:ss a') + "<br /><br />")
+                
             } else {
                 $("#event-content").append(""); //no end. clear out previous info.
             }
             if (location && location != 'null')
             {
-                //$("#event-content").append(info )
+                
                 $scope.txteventlocationmodal = location;
             } else {
                 $("#txtEventLocationtModal").attr('placeholder',"Enter Location here"); //no end. clear out previous info.
             }
             if (info && info != 'null')
             {
-                //$("#event-content").append(info )
+                
                 $scope.txteventinfomodal = info;
             } else {
                 $("#event-content").append(""); //no end. clear out previous info.
@@ -295,10 +295,8 @@ angular.module('offlineModule')
                 console.log("valid date");
                 editedEventObj.start =  $scope.txteventstartmodal;
                 editedEventObj.end =  $scope.txteventendmodal;
-               // editedEventObj.title = $scope.txteventtitlemodal;
-               // editedEventObj.location =  $scope.txteventlocationmodal;
                 console.log("new event start " + editedEventObj.start) ;
-               // $scope.evenListJson  [$scope.editEventIndex] = editedEventObj;
+              
 
             }
            console.log("save event edit modal" +  $scope.offlineEventEditForm.$valid);
@@ -370,8 +368,7 @@ angular.module('offlineModule')
                  var oldeventCount = 0;
 
              }
-             //$scope.eventList = oldEventsList;
-             //console.log("current event list... " + $scope.oldEventsList);
+            
              $scope.newEventStr = JSON.stringify(newEventObj);
              if(oeJson.length !== undefined){
                  var inc = oeJson.length;
@@ -381,7 +378,6 @@ angular.module('offlineModule')
 
              else{
                  var eventArr = new Array();
-                // eventArr[0] = oeJson;
                  eventArr[0] = newEventObj;
                  var newEventList =  JSON.stringify(eventArr);
              }
@@ -401,7 +397,7 @@ angular.module('offlineModule')
                  PopService.eventStatus('fail');
              }
              $scope.offlineEventsCounter = eventCount.length;
-             //events: { url :"https://www.google.com/calendar/feeds/midethesis%40gmail.com/public/basic",  backgroundColor: "#f44"}
+           
              // add new event source from newEventList to display in calendar when user clicks save
              $("#clientCal").fullCalendar('removeEvents');
              $("#clientCal").fullCalendar( {
@@ -444,113 +440,3 @@ offlineController.controller('popController',['$scope', 'PopService', function($
 
 
 }])
-// addEventPop directive with template for webUI popover
-offlineController.directive('addEventPop',[ '$compile','PopService','$rootScope', function( $compile, PopService, $rootScope){
-    return{
-        restrict: 'AE',
-        scope:{
-            eventendtime22: "=",
-            eventstarttime22: "=",
-            eventlocation: "=",
-            eventtitle: "=",
-            eventstatus: "=",
-            mydate: "@",
-            eventdate: "@"
-
-        },
-        template: '<div data-toggle="popover" class="event-popover col-sm-12">' +
-            '<div class="col-sm-12"><span class="col-sm-3">Date: </span><span class="col-sm-9">{{mydate}}</span></div>' +
-            '<div class="col-sm-12"><span class="col-sm-3">Time: </span><span class="col-sm-9"><input type="text" ng-model="eventstarttime"  class="texteventtime" id="eventstarttime"> &mdash; '+
-            '<input type="text" id="eventendtime" data-ng-model="eventendtime" class="texteventtime"></span></div>' +
-
-            '<div class="col-sm-12"><span class="col-sm-3">What:</span><span class="col-sm-9"> <input type="text" id="eventtitle" value="" data-ng-model="eventtitle" class="texteventtitle"> </span></div>'+
-            '<div class="col-sm-12"><span class="col-sm-3">Where:</span> <span class="col-sm-9"><input type="text" data-ng-model="eventlocation" value="" id="eventlocation" class="texteventtitle"> </span></div>'+
-            '<div class="col-sm-12"><span class="col-sm-offset-3 text-info" ng-bind="eventstatus"></span></div>'+
-            '<div class="col-sm-12"><span class="col-sm-offset-6"><span class="btn btn-danger" ng-click="closePop()">cancel</span><span class="btn btn-default" ng-click="sendEvent()" id="btnSavePop">save</span></span></div></div>',
-
-        link: function (scope, el, attrs) {
-
-            console.log("directive linking event...");
-            $('.close').click(function(){
-                console.log("clicked event modal X");
-            }) ;
-            scope.closePop = function(){
-                scope.eventlocation = "";
-                scope.eventtitle = "";
-                scope.eventtitle = "";
-                scope.eventstarttime = "";
-                scope.eventendtime = "";
-                scope.eventstatus = "";
-                $(".webui-popover").hide();
-
-            }
-            scope.sendEvent = function(){
-
-                //$scope.eventendtime = scope.eventendtime;
-               // $scope.eventstarttime = scope.eventstarttime;
-               // $scope.eventlocation = scope.eventlocation;
-               // $scope.eventtitle = scope.eventtitle;
-                var newEventObj = {};
-                var startDateTime  = scope.eventdate + "T" + scope.eventstarttime +":00.000-01:00";
-                var endDateTime  = scope.eventdate + "T" + scope.eventendtime +":00.000-01:00";
-                //newEventObj.start = {};
-                //newEventObj.end = {};
-                newEventObj.location = scope.eventlocation;
-                newEventObj.title = scope.eventtitle;
-                newEventObj.summary = scope.eventtitle;
-                newEventObj.start = startDateTime;
-                newEventObj.end = endDateTime;
-             if(scope.eventendtime == "" || scope.eventstarttime == ""){
-                 scope.eventstatus = "Error saving event";
-             }
-                else{
-                 PopService.eventService(newEventObj);
-                 console.log("directive send event..." );
-             }
-
-            }
-            // watch the directive scope variable before compiling the template contents, very critical condition
-            scope.$watch(scope.eventendtime, function(){
-                // scope.label = scope.label;
-                console.log("directive watch...");
-                $compile(el.contents())(scope);
-             });
-            $rootScope.$on("eventSaved", function(){
-                 console.log("event save broadcast");
-                scope.eventstatus = "Your event was saved";
-              //  $compile(el.contents())(scope);
-            });
-            $rootScope.$on("eventFail", function(){
-                console.log("event fail broadcast");
-                scope.eventstatus = "Error saving event";
-                $compile(el.contents())(scope);
-            })
-
-        }
-
-    }
-}]);
-
-//broadcast service linking offlineController with addEventPop directive
-offlineController.factory('PopService', function($rootScope){
-    return{
-        popData: "",
-        eventService:function(mdata){
-             this.popData = mdata;
-            $rootScope.$broadcast("eventAdded");
-            console.log("broadcast..." + mdata);
-        },
-        eventStatus:function(status){
-            if(status == 'success'){
-                $rootScope.$broadcast("eventSaved");
-                console.log("broadcast... event saved " + status);
-            }
-            if(status == 'fail'){
-                $rootScope.$broadcast("eventFail");
-                console.log("broadcast... event saved " + status);
-            }
-
-        }
-    }
-
-})
