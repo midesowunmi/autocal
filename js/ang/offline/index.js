@@ -3,4 +3,4 @@ module.exports = angular.module('offlineModule',['util'])
 .controller('offlineCtrl', require('./autocalOfflineCtrl.js'))
 .directive('addEventPopOfflineDirective', require('./addEventPopOfflineDirecive.js'))
 .factory('popServiceOffline', require('./services/popServiceOffline.js'))
-.factory('utilS', require('./services/utilService.js));
+.factory('utilS', require('./services/utilService.js'));
