@@ -1,6 +1,6 @@
 'use strict';
 
-function($scope, $compile, PopService, $rootScope, utilS){
+module.exports = function($scope, $compile, PopService, $rootScope, utilS){
         window.offline = $scope;
         // scope variables
         $scope.oldEventsList = localStorage.getItem('offlineEvents');
@@ -418,12 +418,3 @@ function($scope, $compile, PopService, $rootScope, utilS){
 
     }]);
 
-offlineController.controller('popController',['$scope', 'PopService', function($scope, PopService){
-       $scope.popLabel = PopService.popData;
-    $scope.sendEvent = function(){
-        console.log("click popController");
-        PopService.eventService($scope.popLabel);
-    }
-
-
-}
