@@ -4,4 +4,4 @@ module.exports = angular.module('onlineModule',['util'])
 .controller('onlineCtrl', require('./autocalOnlineCtrl.js'))
 .directive('addEventPopOnlineDirective', require('./addEventPopOnlineDirecive.js'))
 .factory('popServiceOnline', require('./services/popServiceOnline.js'))
-.factory('utilS', require('./services/utilService.js));
+.factory('utilS', require('./services/utilService.js'));
