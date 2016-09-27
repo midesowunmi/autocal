@@ -18,4 +18,4 @@ offlineController.factory('PopService', function($rootScope){
             }
 
         }
-    }
+    });
