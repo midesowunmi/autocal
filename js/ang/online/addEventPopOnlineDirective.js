@@ -3,7 +3,7 @@
 module.exports = function ($compile, PopServiceOnline, $rootScope) {
     return{
         restrict: 'AE',
-        template: '../templates/popver.html',
+        template: '../templates/popover.html',
 
 
         scope:{
